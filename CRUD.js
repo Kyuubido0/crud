@@ -1,4 +1,4 @@
-		$(document).ready(function() {
+	$(document).ready(function() {
 
 			/* Main Function - Delete, Add, Hide, Show, Multiple Choices, Remove Choices */
 
@@ -128,34 +128,34 @@
 
 				$(this).closest('.inactive-form').append('<button type="button" id="editPoll" class="button-add">Edit Poll</button> <a href="#" id="btnCancel" style="margin-left: 20px">Cancel</a>');
 
-						/* Edit poll look with the delete button and cancel */
+			/* Edit poll look with the delete button and cancel */
 
-						$('#editPoll').on('click', function() {
-							var output = "<div class='inactive-form'>";
-							output += "<strong class='strong-display'> Question: </strong><div class='questionToAnswer' id='questionToAnswer' style='clear:none;'>" + document.getElementById('txtQuestionEdit').value + "</div>";
-							output += "<div class='controls'><input type='image' src='pencil117.png' class='icon-edit' alt='Submit'>";
-							output += "<input type='image' src='cross108.png' class='icon-delete' alt='Submit'></div><br>";
-							output += "<strong class='strong-display'> Answer: </strong><div id='txtAnswers'>";
-							if(document.getElementById('editsingle-answer').checked) {
-								output += "Yes / No</div>";
-							}
-							else if(document.getElementById('editmultiple-answer').checked) {
-								for(var k = 1;k <= ansNumb;k ++) {
-									output += "<div id='answer" + k + "'>" + document.getElementById('editAns' + k).value + "</div>";
-								}
-								output +="</div>";
-							}
-							output += "</p></div>";
-							$('.add-poll').append(output);
-							$(this).closest('.inactive-form').remove();
-						});
+			$('#editPoll').on('click', function() {
+				var output = "<div class='inactive-form'>";
+				output += "<strong class='strong-display'> Question: </strong><div class='questionToAnswer' id='questionToAnswer' style='clear:none;'>" + document.getElementById('txtQuestionEdit').value + "</div>";
+				output += "<div class='controls'><input type='image' src='pencil117.png' class='icon-edit' alt='Submit'>";
+				output += "<input type='image' src='cross108.png' class='icon-delete' alt='Submit'></div><br>";
+				output += "<strong class='strong-display'> Answer: </strong><div id='txtAnswers'>";
+				if(document.getElementById('editsingle-answer').checked) {
+						output += "Yes / No</div>";
+				}
+				else if(document.getElementById('editmultiple-answer').checked) {
+					for(var k = 1;k <= ansNumb;k ++) {
+						output += "<div id='answer" + k + "'>" + document.getElementById('editAns' + k).value + "</div>";
+					}
+					output +="</div>";
+				}
+				output += "</p></div>";
+				$('.add-poll').append(output);
+				$(this).closest('.inactive-form').remove();
+			});
 
-				$('#btnCancel').on('click', function() {
-					$(this).closest('.inactive-form').remove();
-					var output = "<div class='inactive-form'>";
-					output += contentCancel;
-					output += "</div>";
-					$('.add-poll').append(output);
-				});		
-			});	
-		});
+			$('#btnCancel').on('click', function() {
+				$(this).closest('.inactive-form').remove();
+				var output = "<div class='inactive-form'>";
+				output += contentCancel;
+				output += "</div>";
+				$('.add-poll').append(output);
+			});		
+		});	
+	});
