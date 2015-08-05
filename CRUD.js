@@ -136,10 +136,10 @@ $(document).ready(function() {
 		
 		$('#editPoll').on('click', function() {
 			var output = "<div class='inactive-form'>";
+				output += "<strong class='strong-display'> Question: </strong><div class='questionToAnswer' id='questionToAnswer' style='clear:none;'>" + document.getElementById('txtQuestionEdit').value + "</div>";
 				output += "<div class='controls'><input type='image' src='pencil117.png' class='icon-edit' alt='Submit'>";
-				output += "<input type='image' src='cross108.png' class='icon-delete' alt='Submit'></div>";
-				output += "Question: <div class='questionToAnswer' id='questionToAnswer' style='clear:none;'>" + document.getElementById('txtQuestionEdit').value + "</div>";
-				output += "<p class='order-p'> Answer: <div id='txtAnswers'>";
+				output += "<input type='image' src='cross108.png' class='icon-delete' alt='Submit'></div><br>";
+				output += "<strong class='strong-display'> Answer: </strong><div id='txtAnswers'>";
 				if(document.getElementById('editsingle-answer').checked)
 				{
 					output += "Yes / No</div>";
