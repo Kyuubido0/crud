@@ -85,8 +85,8 @@ input{
 	margin-left: 10px;
 }
 
-#multiple-answer{
-	margin-left: 118px;
+.multiple-answer{
+	margin-left: 138px;
 }
 #multiple-answer-edit{
 	margin-left: 118px;
@@ -122,6 +122,17 @@ input{
 	padding:0;
 	margin-left: 20px;
 	margin-top: 10px;
+}
+
+.circle {
+	width: 15px;
+	height: 15px;
+	background: red;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	display: inline-block;
+	margin-left: 10px;
 }
 /* Buttons */
 
@@ -169,6 +180,7 @@ input{
 .strong-display{
 	display: inline-block;
 	margin-bottom: 20px;
+	margin-left: 60px;
 }
 .questionToAnswer{
 	
@@ -184,4 +196,9 @@ input{
 	padding:0;
 	margin-left: 28px;
 	display: inline-block;
+}
+.paragraph-section{
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
 }
