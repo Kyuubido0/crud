@@ -3,7 +3,7 @@
 			/* Main Function - Delete, Add, Hide, Show, Multiple Choices, Remove Choices */
 
 			var contentCancel = "";
-		
+			var choiceNumber = 3;
 			$(".options").hide();
 
 			$('#multiple-answer').change(function() {
@@ -22,7 +22,7 @@
 			$('.add-choice').click(function(e) {
 				e.preventDefault();
 				var newChoiceInput="";
-
+				choiceNumber++;
 				newChoiceInput += "<li class='choice-wrapper'> <label> Choice </label> <input type='text' name='choice'> <input type='image' src='cross108.png' class='icon-del' alt='Submit'> </li>";
 				$(newChoiceInput).hide().appendTo('ol').slideDown();
 
@@ -30,14 +30,14 @@
 					index += 1;
 					$(this).find('label').text("Choice #" + index);
 					$(this).find('label').attr('for', index);
-					$(this).find('input').attr('id', index);
+					$(this).find('input').attr('id', 'choice'+index);
 				});
 			});
 
 
 			$('ol').on('click', '.icon-del', function(e) {
 				e.preventDefault();
-
+				choiceNumber-- ;
 				$(this).closest('li').slideUp(300, function() {
 					$(this).remove();
 
@@ -45,7 +45,7 @@
 						index += 1; 
 						$(this).find('label').text("Choice #" + index);
 						$(this).find('label').attr('for', index);
-						$(this).find('input').attr('id', index);
+						$(this).find('input').attr('id', 'choice'+index);
 					});
 				});
 			});
@@ -68,6 +68,7 @@
 				}
 				else if(document.getElementById('multiple-answer').checked) {
 					for(var k = 1;k <= choiceNumber; k++) {
+						console.log(choiceNumber);
 						output += "<div id='answer" + k + "'>" + document.getElementById('choice' + k).value + "</div>";
 					}
 					output += "</div>";
