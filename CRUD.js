@@ -3,35 +3,51 @@
 			/* Main Function - Delete, Add, Hide, Show, Multiple Choices, Remove Choices */
 
 			var contentCancel = "";
-			$('.options').hide();
+		
+			$(".options").hide();
 
-			$('#single-answer').on('click', function() {
-				$('.options').slideUp();
+			$('#multiple-answer').change(function() {
+				if($('#multiple-answer').is(':checked')) {
+					$('.options').slideDown();
+				}
+			}); 
+
+			$('#single-answer'). change(function() {
+				if($("#single-answer").is(':checked')) {
+					$('.options').slideUp();
+				}
 			});
 
-			var choiceNumber = 2;
-			var answerNumber = 2;
 
-			$('#multiple-answer').on('click', function() {
-				$('.options').slideDown();
-				choiceNumber = 2;
-				$('.add-choice').on('click', function(e) {
-					e.preventDefault();
-					choiceNumber++;
-					var input = "";
-					input += "<li class='list' style='display:none'>Choice #" + choiceNumber + "<input type='text' name='choice' id='choice" + choiceNumber + "'>";
-					input += "<input type='image' src='cross108.png' class='icon-del' alt='Submit'></li>";
-					//$('.poll-list').append(input);
-					$(input).appendTo('.poll-list').show('slow');
-				});	
+			$('.add-choice').click(function(e) {
+				e.preventDefault();
+				var newChoiceInput="";
 
-				answerNumber = choiceNumber;
-				$('ol').on('click', '.icon-del', function() {
-					$(this).closest('.list').slideUp('slow', function(){ 
-						$(this).closest('.list').remove(); 
+				newChoiceInput += "<li class='choice-wrapper'> <label> Choice </label> <input type='text' name='choice'> <input type='image' src='cross108.png' class='icon-del' alt='Submit'> </li>";
+				$(newChoiceInput).hide().appendTo('ol').slideDown();
+
+				$('ol').find('.choice-wrapper').each(function(index) {
+					index += 1;
+					$(this).find('label').text("Choice #" + index);
+					$(this).find('label').attr('for', index);
+					$(this).find('input').attr('id', index);
+				});
+			});
+
+
+			$('ol').on('click', '.icon-del', function(e) {
+				e.preventDefault();
+
+				$(this).closest('li').slideUp(300, function() {
+					$(this).remove();
+
+					$('ol').find('.choice-wrapper').each(function(index) {
+						index += 1; 
+						$(this).find('label').text("Choice #" + index);
+						$(this).find('label').attr('for', index);
+						$(this).find('input').attr('id', index);
 					});
-					choiceNumber -= 1;
-				});	
+				});
 			});
 
 			/*  Add answers when Button Add clicked and create inactive form and delete the inactive form*/
@@ -39,12 +55,13 @@
 			$('.button-add').on('click', function() {
 
 				var output = "<div class='inactive-form'>";
+				output += "<div class='circle paragraph-section'>1</div>";
 				output += "<strong class='strong-display'>Question:</strong>";
 				output += "<div class='questionToAnswer' id='questionToAnswer' style='clear:none;'>" + document.getElementById('txtQuestion').value + "</div>";
 				output += "<div class='controls'><input type='image' src='pencil117.png' class='icon-edit' alt='Submit'>";
 				output += "<input type='image' src='cross108.png' class='icon-delete' alt='Submit'></div>";
 				output += "<br>";
-				output += "<strong class='strong-display'>Answer:</strong> <div id='txtAnswers'>";
+				output += "<strong class='strong-display-answer'>Answer:</strong> <div id='txtAnswers'>";
 
 				if(document.getElementById('single-answer').checked) {
 					output += "Yes / No</div>";
@@ -70,6 +87,7 @@
 				contentCancel = $(this).closest('.inactive-form').html();
 				var edit = "";
 				edit += '<input type="text" name="questionEdit" id="txtQuestionEdit" value="'+ $(this).closest('.inactive-form').find('#questionToAnswer').text() +'">';
+				
 				var multi = "";
 				var ans = "";
 				ans += '<label for="editsingle-answer">';
@@ -84,13 +102,13 @@
 
 				if($(this).closest('.inactive-form').find('#txtAnswers').text()!="Yes / No") {
 					for(var k = 1;k <= choiceNumber; k++) {
-						multi += '<label> Choice #'+k+' </label> <input type="text" id="editAns' + k + '" value="'+ $(this).closest('.inactive-form').find('#answer'+k).text() +'"><br />';
+						multi += '<label> Choice #' + k + ' </label> <input type="text" id="editAns' + k + '" value="'+ $(this).closest('.inactive-form').find('#answer'+k).text() +'"><br />';
 					}
 				}
 
 				if(multi == "") {
-					ans += '<label> Choice # </label> <input type="text" id="editAns1"> <br/>';
-					ans += '<label> Choice # </label> <input type="text" id="editAns2"> <br/>';
+					ans += '<label> Choice #1 </label> <input type="text" id="editAns1"> <br/>';
+					ans += '<label> Choice #2 </label> <input type="text" id="editAns2"> <br/>';
 				}
 				else {
 					ans += multi;
@@ -132,10 +150,11 @@
 
 			$('#editPoll').on('click', function() {
 				var output = "<div class='inactive-form'>";
+				output += '<div class="circle paragraph-section">1</div>';
 				output += "<strong class='strong-display'> Question: </strong><div class='questionToAnswer' id='questionToAnswer' style='clear:none;'>" + document.getElementById('txtQuestionEdit').value + "</div>";
 				output += "<div class='controls'><input type='image' src='pencil117.png' class='icon-edit' alt='Submit'>";
 				output += "<input type='image' src='cross108.png' class='icon-delete' alt='Submit'></div><br>";
-				output += "<strong class='strong-display'> Answer: </strong><div id='txtAnswers'>";
+				output += "<strong class='strong-display-answer'> Answer: </strong><div id='txtAnswers'>";
 				if(document.getElementById('editsingle-answer').checked) {
 						output += "Yes / No</div>";
 				}

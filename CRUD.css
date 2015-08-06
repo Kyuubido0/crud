@@ -180,10 +180,13 @@ input{
 .strong-display{
 	display: inline-block;
 	margin-bottom: 20px;
+}
+.strong-display-answer{
+	display: inline-block;
+	margin-bottom: 20px;
 	margin-left: 60px;
 }
 .questionToAnswer{
-	
 	margin-bottom: 20px;
 	margin:0;
 	padding:0;
@@ -191,10 +194,8 @@ input{
 	display: inline-block;
 }
 #txtAnswers{
-	margin-top: 30px;
-	margin:0;
+	margin-left: 25px;
 	padding:0;
-	margin-left: 28px;
 	display: inline-block;
 }
 .paragraph-section{

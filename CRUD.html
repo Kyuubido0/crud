@@ -27,7 +27,7 @@
 				<br>
 				
                 <label for="single-answer">
-                    <strong class="strong-display">Answers:</strong>
+                    <strong class="strong-display-answer">Answers:</strong>
                     <input type="radio" name="answer" id="single-answer" class="radio-buttons" value="yes/no">Yes/No form
                 </label>
 				
@@ -41,8 +41,21 @@
                 <div class="options">
 					
                     <ol class="poll-list">
-                        <li class="list">Choice #1<input type="text" name="choice" id="choice1"></li>
-                        <li class="list">Choice #2<input type="text" name="choice" id="choice2"></li>
+						
+                        <li class="choice-wrapper">
+							<label for="1">Choice #1</label>
+							<input type="text" id="1" name="choice">
+						</li>
+						<li class="choice-wrapper">
+							<label for="2">Choice #2</label>
+							<input type="text" id="2" name="choice">
+						</li>
+						<li class="choice-wrapper">
+							<label for="3">Choice #3</label>
+							<input type="text" id="3" name="choice" class="test">
+							<input type='image' src='cross108.png' class='icon-del' alt='Submit'>
+						</li>
+						
                     </ol>
 					
                     <a href="#" class="add-choice">+ Add new choice</a>
