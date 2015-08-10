@@ -134,6 +134,16 @@ input{
 	display: inline-block;
 	margin-left: 10px;
 }
+.circle-grey {
+	width: 15px;
+	height: 15px;
+	background: darkgrey;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	display: inline-block;
+	margin-left: 10px;
+}
 /* Buttons */
 
 .button-add{
