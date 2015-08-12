@@ -54,11 +54,11 @@ var POLL = (function() {
 				output += "<strong class='strong-display-answer'>Answer:</strong> <div id='txtAnswers'>";
 
 				if(document.getElementById('single-answer').checked) {
-					output += "Yes / No</div>";
+					output += "Yes / No </div>";
 				}
 				else if(document.getElementById('multiple-answer').checked) {
-					for(var k = 1;k <= choiceNumber; k++) {
-						console.log(choiceNumber);
+					for(var k = 1; k <= choiceNumber; k++) {
+						//console.log(choiceNumber);
 						output += "<div id='answer" + k + "'>" + document.getElementById('choice' + k).value + "</div>";
 					}
 					output += "</div>";
@@ -75,7 +75,7 @@ var POLL = (function() {
 		
 		contentCancel = $(this).closest('.inactive-form').html();
 		var edit = "";
-		edit += '<input type="text" name="questionEdit" id="txtQuestionEdit" value="'+ $(this).closest('.inactive-form').find('#questionToAnswer').text() +'">';
+		edit += '<input type="text" name="questionEdit" id="txtQuestionEdit" value="'+ $(this).closest('.inactive-form').find('#questionToAnswer').text() + '" >';
 		var multi = "";
 		var ans = "";
 		ans += '<label for="editsingle-answer">';
@@ -88,12 +88,13 @@ var POLL = (function() {
 		ans += '<div class="editoptions" style="display:none;">';
 		ans += '<ol class="editpoll-list">';
 
-		if($(this).closest('.inactive-form').find('#txtAnswers').text()!="Yes / No") {
+		if($(this).closest('.inactive-form').find('#txtAnswers').text() != "Yes / No") {
 			for(var k = 1;k <= choiceNumber; k++) {
-				multi += '<label> Choice #' + k + ' </label> <input type="text" id="editAns' + k + '" value="'+ $(this).closest('.inactive-form').find('#answer'+k).text() +'"><br />';
+				multi += '<label> Choice #' + k + ' </label> <input type="text" id="editAns' + k + '" value="'+ $(this).closest('.inactive-form').find('#answer' + k).text() +'"><br />';
 			}
 		}
-		ansNumb = k-1;
+		ansNumb = k - 1;
+        
 		if(multi == "") {
 			ans += '<label> Choice #1 </label> <input type="text" id="editAns1"> <br/>';
 			ans += '<label> Choice #2 </label> <input type="text" id="editAns2"> <br/>';
@@ -110,7 +111,7 @@ var POLL = (function() {
 		$('#editsingle-answer').on('click', slideUpClickFunction); 
 		$('.editadd-choice').on('click', addChoiceEditClickHandler); 
 		$('ol').on('click', '.icon-del', iconDeleteFormEditClickHandler);
-		$(this).closest('.inactive-form').append('<button type="button" id="editPoll" class="button-add">Edit Poll</button> <a href="#" id="btnCancel" style="margin-left: 20px">Cancel</a>');
+		$(this).closest('.inactive-form').append('<button type="button" id="editPoll" class="button-add">Edit Poll</button><a href="#" id="btnCancel">Cancel</a>');
 		/* Edit poll look with the delete button and cancel */
 		$('#editPoll').on('click', buttonSaveClickHandler); 
 			circleNumber--;
