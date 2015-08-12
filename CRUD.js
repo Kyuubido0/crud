@@ -3,7 +3,7 @@ var POLL = (function() {
 	var contentCancel = "";
 	var choiceNumber = 3;
 	var circleNumber = 1;
-	
+	var ansNumb;
 	function addChoiceClickHandler(e) {
 				e.preventDefault();
 				var newChoiceInput="";
@@ -65,13 +65,14 @@ var POLL = (function() {
 				}
 				output += "</p></div>";
 				$('.add-poll').append(output);
+                $('.add-poll').find('input').val('');
 			};
 	function iconDeleteFormClickFunction() {
 				$(this).closest('.inactive-form').remove();
 			};
 	function iconEditFormClickFunction() {
 		
-		var ansNumb = k-1;
+		
 		contentCancel = $(this).closest('.inactive-form').html();
 		var edit = "";
 		edit += '<input type="text" name="questionEdit" id="txtQuestionEdit" value="'+ $(this).closest('.inactive-form').find('#questionToAnswer').text() +'">';
@@ -92,7 +93,7 @@ var POLL = (function() {
 				multi += '<label> Choice #' + k + ' </label> <input type="text" id="editAns' + k + '" value="'+ $(this).closest('.inactive-form').find('#answer'+k).text() +'"><br />';
 			}
 		}
-
+		ansNumb = k-1;
 		if(multi == "") {
 			ans += '<label> Choice #1 </label> <input type="text" id="editAns1"> <br/>';
 			ans += '<label> Choice #2 </label> <input type="text" id="editAns2"> <br/>';
